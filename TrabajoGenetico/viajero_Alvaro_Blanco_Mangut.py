@@ -1,53 +1,42 @@
-import numpy as np
 import random
 import sys
 import statistics
 import time
+import algoritmoHormiga
+import algoritmoGenetico
+import mapa
 from random import sample
 
+class main():
+    alpha = 0.0
+    nCiudades = 6
+    ciudades = type(mapa)
+    hormiga = type(algoritmoHormiga)
+    genetico = type(algoritmoGenetico)
 
-class mapa:
-    ciudad=np.zeros((2, 3))
-    def __init__(self,nCiudades):
-        self.ciudad=np.zeros((nCiudades, nCiudades),int)
+    def __init__(self,_alpha,_nCiudades):
+        self.alpha = _alpha
+        self.nCiudades = _nCiudades
+        self.ciudades = mapa.mapa(_nCiudades)
+        self.hormiga = algoritmoHormiga.algoritmoHormiga(_nCiudades)
+        self.genetico = algoritmoGenetico.algoritmoGenetico(_alpha)
 
-    def generarMapa(self):
-        j=1
-        for i in range(int(sys.argv[1])):
-            L=sample(range(1,100),int(sys.argv[1])-i)
-            if (i==0):
-                self.ciudad[i]=L
-                continue
-            for x in range(i):
-                if (x<i):
-                    L.insert(x,self.ciudad[x][j])
-            if (j<int(sys.argv[1])):
-                self.ciudad[j]=L
-            j=j+1
-        np.fill_diagonal(self.ciudad, 0)
+    def hormigas(self):
+        return self.hormiga
 
-    def mostrarMapa(self):
-        for i in range(int(sys.argv[1])):
-            if (i<=9):
-                print("ciudad ",i, "" ,self.ciudad[i])
-            else:
-                print("ciudad ",i ,self.ciudad[i])
+    def geneticos(self):
+        return self.genetico
 
-
-class geneticoHormigas:
-    matrizFeromonas=np.zeros((3, 3))
-    def __init__(self,nCiudades):
-            self.matrizFeromonas = np.ones((nCiudades, nCiudades),int)
-            np.fill_diagonal(self.matrizFeromonas, 0)
-
- 
-
-
-if __name__ == "__main__":
-    print("Numero de ciudades a configurar",sys.argv[1])
-    print("\n")
-    map = mapa(int(sys.argv[1]))
-    genetico = geneticoHormigas(int(sys.argv[1]))
+    def mapaCiudades(self):
+        return self.ciudades
     
-    map.generarMapa()
-    
+
+
+###############################################################
+###############################################################
+###############################################################
+###############################################################
+###############################################################
+mainProgram = main(0.0,6)
+mainProgram.mapaCiudades().mostrarMapa()
+mainProgram.hormigas().mostrarMapaFeromonas()
