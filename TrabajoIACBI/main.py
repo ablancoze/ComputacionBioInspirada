@@ -26,7 +26,7 @@ def main(_): #?
                       test_img = FLAGS.test_img,
                       )
 
-        usCNN.trainTensorFlow(FLAGS)
+        usCNN.train(FLAGS)
 
 if __name__=='__main__':
     tf.app.run() # parse the command argument , the call the main function
