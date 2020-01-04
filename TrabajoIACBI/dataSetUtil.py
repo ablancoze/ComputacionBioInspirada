@@ -4,7 +4,6 @@ AUTOTUNE = tf.data.experimental.AUTOTUNE
 import IPython.display as display
 from PIL import Image
 import numpy as np
-import matplotlib.pyplot as plt
 import glob
 import os
 import pathlib
