@@ -130,7 +130,3 @@ dmypy.json
 
 # CheckPoints
 *.h5
-*.index
-*.meta
-TrabajoIACBI/checkpoint
-TrabajaIACBI/result
