@@ -3,7 +3,7 @@ import UpScalingCNN
 import tensorflow.compat.v1 as tf
 flags = tf.app.flags
 FLAGS = flags.FLAGS
-flags.DEFINE_integer("epoch", 15000, "Number of epoch")
+flags.DEFINE_integer("epoch", 35000, "Number of epoch")
 flags.DEFINE_integer("image_size", 17, "The size of image input")
 flags.DEFINE_integer("c_dim", 3, "The size of channel")
 flags.DEFINE_boolean("is_train", False, "if the train")
@@ -19,7 +19,7 @@ def main(_): #?
     with tf.Session() as sess:
         usCNN = UpScalingCNN.Subpixel(sess,
                       image_size = FLAGS.image_size,
-                      is_train = True,
+                      is_train = False,
                       scale = FLAGS.scale,
                       c_dim = FLAGS.c_dim,
                       batch_size = FLAGS.batch_size,
